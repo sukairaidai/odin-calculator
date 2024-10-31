@@ -17,12 +17,10 @@ body {
     height: 400px;
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
 }
 
 .top-buttons,
-.display,
-.controls {
+.display {
     background-color: rgb(85, 86, 87);
 }
 
@@ -30,6 +28,7 @@ body {
     display: flex;
     padding: 5px;
     gap: 5px;
+    border-radius: 10px 10px 0px 0px;
 }
 
 .top-buttons button {
@@ -78,8 +77,43 @@ body {
     flex: 1;
     border: none;
     border: 1px solid rgb(85, 86, 87);
+    color: rgb(238, 238, 238);
+    font-size: 20px;
+    font-weight: bold;
 }
 
 button.zero {
     flex-grow: 2.033;
+}
+
+.gray {
+    background-color: rgb(99, 100, 101);
+}
+
+.orange {
+    background-color: rgb(242, 162, 60);
+}
+
+.number {
+    background-color: rgb(125, 125, 125);
+}
+
+.row:last-of-type button:first-of-type {
+    border-radius: 0px 0px 0px 10px;
+}
+
+.row:last-of-type button:last-of-type {
+    border-radius: 0px 0px 10px 0px;
+}
+
+.number:active {
+    background-color: rgb(178, 178, 178);
+}
+
+.gray:active {
+    background-color: rgb(127, 127, 127);
+}
+
+.orange:active {
+    background-color: rgb(192, 128, 46);
 }
