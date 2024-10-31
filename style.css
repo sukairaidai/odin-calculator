@@ -18,11 +18,11 @@ body {
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    border: 3px solid rgb(85, 86, 87);
 }
 
 .top-buttons,
-.display {
+.display,
+.controls {
     background-color: rgb(85, 86, 87);
 }
 
@@ -61,4 +61,25 @@ body {
 .result {
     font-size: 40px;
     color: rgb(238, 238, 238);
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.row {
+    display: flex;
+    flex-grow: 1;
+}
+
+.row button {
+    flex: 1;
+    border: none;
+    border: 1px solid rgb(85, 86, 87);
+}
+
+button.zero {
+    flex-grow: 2.033;
 }
