@@ -12,8 +12,8 @@ body {
 }
 
 .calculator {
-    width: 300px;
-    height: 600px;
+    width: 250px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
@@ -48,4 +48,16 @@ body {
 
 .expand {
     background-color: rgb(97, 195, 83);
+}
+
+.display {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.result {
+    font-size: 40px;
+    color: rgb(238, 238, 238);
 }
