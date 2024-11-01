@@ -95,6 +95,11 @@ function updateResult() {
         return;
     }
     const result = operate(operator, parseFloat(firstValue), parseFloat(secondValue));
+    if (!parseInt(result)) {
+        reset();
+        updateDisplay(result);
+        return;
+    }
     reset();
     firstValue = roundValue(result);
     updateDisplay();
