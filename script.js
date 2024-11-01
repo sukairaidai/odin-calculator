@@ -60,10 +60,17 @@ function addDigitsEvents() {
 
 function updateCurrentValue(update) {
     if (!operator) {
-        firstValue += update;
+        firstValue = validateUpdate(firstValue, update);
     } else {
-        secondValue += update;
+        secondValue = validateUpdate(secondValue, update);
     }
+}
+
+function validateUpdate(current, update) {
+    if (update === "." && current.includes(update)) {
+        return current;
+    }
+    return current += update;
 }
 
 function roundValue(val) {
@@ -95,13 +102,12 @@ function updateResult() {
         return;
     }
     const result = operate(operator, parseFloat(firstValue), parseFloat(secondValue));
-    if (!parseInt(result)) {
-        reset();
+    reset();
+    if (typeof result === "string") {
         updateDisplay(result);
         return;
     }
-    reset();
-    firstValue = roundValue(result);
+    firstValue = roundValue(result).toString();
     updateDisplay();
 }
 
