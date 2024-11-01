@@ -100,12 +100,12 @@ function updateResult() {
     updateDisplay();
 }
 
-function reset() {
+function reset(initialValue = "") {
     firstValue = "";
     secondValue = "";
     operator = "";
     displayValue = "";
-    updateDisplay();
+    updateDisplay(initialValue);
 }
 
 function handleEqualsClick() {
@@ -115,6 +115,14 @@ function handleEqualsClick() {
     })
 }
 
+function handleClear() {
+    const clearButton = document.querySelector(".clear");
+    clearButton.addEventListener("click", () => {
+        reset("0");
+    });
+}
+
 addDigitsEvents();
 addOperatorsEvents();
 handleEqualsClick();
+handleClear();
