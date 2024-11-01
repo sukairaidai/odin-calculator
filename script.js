@@ -15,9 +15,9 @@ function divide(a, b) {
     return a / b;
 }
 
-let firstValue;
-let secondValue;
-let operator;
+let firstValue = "";
+let secondValue = "";
+let operator = "";
 let displayValue = "";
 
 function operate(operator, a, b) {
@@ -26,7 +26,7 @@ function operate(operator, a, b) {
             return add(a, b);
         case "-":
             return subtract(a, b);
-        case "*":
+        case "x":
             return multiply(a, b);
         case "/":
             if (b === 0) {
@@ -40,17 +40,74 @@ function operate(operator, a, b) {
 
 function updateDisplay(value) {
     const display = document.querySelector(".result");
-    display.textContent = value;
+    if (value) {
+        display.textContent = value;
+    } else {
+        display.textContent = `${firstValue} ${operator} ${secondValue}`
+    }
 }
 
-function addDigitsEvent() {
+function addDigitsEvents() {
     const digits = document.querySelectorAll(".number");
     digits.forEach((digit) => {
         digit.addEventListener('click', (e) => {
             displayValue += e.target.textContent;
-            updateDisplay(displayValue);
+            updateCurrentValue(e.target.textContent);
+            updateDisplay();
         })
     })
 }
 
-addDigitsEvent();
+function updateCurrentValue(update) {
+    if (!operator) {
+        firstValue += update;
+    } else {
+        secondValue += update;
+    }
+}
+
+function updateOperator(newOperator) {
+    if (!firstValue || secondValue) {
+        return;
+    }
+    operator = newOperator;
+    updateDisplay();
+}
+
+function addOperatorsEvents() {
+    const operators = document.querySelectorAll(".operator");
+    operators.forEach((operator) => {
+        operator.addEventListener("click", (e) => {
+            updateOperator(e.target.textContent);
+        })
+    })
+}
+
+function updateResult() {
+    if (!firstValue || !secondValue) {
+        return;
+    }
+    const result = operate(operator, parseFloat(firstValue), parseFloat(secondValue));
+    reset();
+    firstValue = result;
+    updateDisplay();
+}
+
+function reset() {
+    firstValue = "";
+    secondValue = "";
+    operator = "";
+    displayValue = "";
+    updateDisplay();
+}
+
+function handleEqualsClick() {
+    const equals = document.querySelector(".equals");
+    equals.addEventListener("click", () => {
+        updateResult();
+    })
+}
+
+addDigitsEvents();
+addOperatorsEvents();
+handleEqualsClick();
