@@ -52,14 +52,16 @@ body {
 
 .display {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-end;
     padding: 10px;
+    height: 80px;
 }
 
 .result {
     font-size: 40px;
     color: rgb(238, 238, 238);
+    overflow-x: auto;
 }
 
 .controls {

@@ -18,6 +18,7 @@ function divide(a, b) {
 let firstValue;
 let secondValue;
 let operator;
+let displayValue = "";
 
 function operate(operator, a, b) {
     switch (operator) {
@@ -36,3 +37,20 @@ function operate(operator, a, b) {
             return "error, unkown operation";
     }
 }
+
+function updateDisplay(value) {
+    const display = document.querySelector(".result");
+    display.textContent = value;
+}
+
+function addDigitsEvent() {
+    const digits = document.querySelectorAll(".number");
+    digits.forEach((digit) => {
+        digit.addEventListener('click', (e) => {
+            displayValue += e.target.textContent;
+            updateDisplay(displayValue);
+        })
+    })
+}
+
+addDigitsEvent();
