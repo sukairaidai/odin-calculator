@@ -67,8 +67,11 @@ function updateCurrentValue(update) {
 }
 
 function updateOperator(newOperator) {
-    if (!firstValue || secondValue) {
+    if (!firstValue) {
         return;
+    }
+    if (secondValue) {
+        updateResult();
     }
     operator = newOperator;
     updateDisplay();
