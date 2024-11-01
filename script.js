@@ -66,6 +66,10 @@ function updateCurrentValue(update) {
     }
 }
 
+function roundValue(val) {
+    return Math.round(val * 1000) / 1000;
+}
+
 function updateOperator(newOperator) {
     if (!firstValue) {
         return;
@@ -92,7 +96,7 @@ function updateResult() {
     }
     const result = operate(operator, parseFloat(firstValue), parseFloat(secondValue));
     reset();
-    firstValue = result;
+    firstValue = roundValue(result);
     updateDisplay();
 }
 
